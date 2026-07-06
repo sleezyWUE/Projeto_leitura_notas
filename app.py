@@ -27,10 +27,9 @@ if not os.path.exists(DATABASE_FILE) or os.path.getsize(DATABASE_FILE) == 0:
             "fiscal_id"
         ])
 
-# Força a barra lateral a aparecer na tela do aplicativo para você colar a chave gerada
-api_key = st.sidebar.text_input("Cole sua Gemini API Key aqui:", type="password")
-if api_key:
-    genai.configure(api_key=api_key)
+# Busca a credencial de forma segura e oculta nas configurações do Streamlit Cloud
+if "GEMINI_API_KEY" in st.secrets:
+    genai.configure(api_key=st.secrets["GEMINI_API_KEY"])
 
 CATEGORIES = [
     "ÁGUA", "ALMOÇO", "CAFÉ DA MANHÃ", "CARGA", "COMBUSTÍVEL", "CRÉDITO",
