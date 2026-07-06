@@ -74,9 +74,7 @@ with st.form(key=f"expense_form_{st.session_state.form_key}", clear_on_submit=Tr
 # ==============================================================================
 
 if submit_button:
-    if not api_key:
-        st.error("Erro: Insira a sua Gemini API Key na barra lateral esquerda antes de continuar.")
-    elif not employee_name:
+    if not employee_name:
         st.error("Erro: O campo 'Nome do Funcionário' é obrigatório.")
     elif not captured_file:
         st.error("Erro: Nenhuma imagem detectada para processamento.")
